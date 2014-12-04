@@ -36,7 +36,36 @@ var comparingObje={c:'c',y:'a'};
 
 console.log(where(objArray,comparingObje));
 console.log(findWhere(objArray,comparingObje));
-*/
+
 console.log(filter([1,5,6,2,9,3],function(element){return element%2==0;}));
 console.log(reject([1,5,6,2,9,3],function(element){return element%2==0;}));
 console.log(rejectFilterBased([1,5,6,2,9,3],function(element){return element%2==0;}));
+
+
+console.log(every([1,5,6,7,9],function(element){return element>0;}));
+console.log(everyBasedOnMap([1,5,6,7,9],function(element){return element>0;}));
+*/
+
+var obj1={
+
+	print:function (a){
+		console.log(a);
+	},
+	printDate:function (){
+		console.log(new Date());
+	},
+	printSquare: function (a){
+		console.log(a*a);
+	},
+	printAdd: function(a,b){
+		console.log(a+b);
+	}
+};
+
+/*
+console.log(invoke([obj1,obj1],"printSquare",5));
+console.log(invoke([obj1,obj1],"printDate"));
+console.log(invoke([obj1,obj1],"printAdd",5,4));
+*/
+
+console.log(pluck([obj1,obj1],"printDate"));

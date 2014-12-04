@@ -205,3 +205,43 @@ function rejectFilterBased(list,predicate){
 	return filter(list,inversePredicate);
 }
 
+
+function every(list,predicate){
+
+	function testCurrent(elem,memo){
+		return memo && predicate(elem);
+	}
+	
+	return reduce(list,testCurrent,true);
+}
+
+function everyBasedOnMap(list,predicate){
+	var overAllResult=true;
+	
+	function testCurrent(elem){
+		overAllResult=overAllResult && predicate(elem);
+	}
+	
+	each(list,testCurrent);
+	return overAllResult;
+}
+
+function invoke(list,methodName){
+	var argo=Array.prototype.slice.call(arguments, 2);
+	
+	function invokeOnCurrent(element){
+		element[methodName].apply(element,argo);
+	}
+	
+	each(list,invokeOnCurrent);
+}
+
+function pluck(list,propertyName){
+	
+	function evaluateSingle(element){
+		return element[propertyName]();
+	}
+	
+	return map(list,evaluateSingle);
+}
+
